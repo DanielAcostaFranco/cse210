@@ -15,7 +15,7 @@ class Program
         WritingAssignment assignment2 = new WritingAssignment();
         assignment2.setStudent("Daniel");
         assignment2.setTopic("Information Technology");
-        assignment2.SetWritingInformation("The invention of the Computer");
+        assignment2.SetWritingInformation("The invention of Computers"); 
 
 
         Console.WriteLine(assignment2.GetWritingAssignment());
