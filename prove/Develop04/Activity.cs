@@ -3,9 +3,9 @@ using System.Threading;
 
 public class Activity
 {
-    protected string _title;
-    protected string _description;
-    protected string _endMessage;
+    private string _title;
+    private string _description;
+    private string _endMessage;
     protected int _seconds;
 
     public Activity(string title, string description, string endMessage)
