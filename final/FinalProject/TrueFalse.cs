@@ -7,8 +7,7 @@ public class TrueFalse : Question
 
     public override void DisplayQuestion()
     {
-        base.DisplayQuestionDetails();
-        Console.WriteLine("Is this statement True or False? (T/F)");
+        // something :)
     }
 
     public override bool CheckAnswer(string userAnswer)

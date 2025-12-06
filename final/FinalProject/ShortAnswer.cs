@@ -7,8 +7,7 @@ public class ShortAnswer : Question
 
     public override void DisplayQuestion()
     {
-        base.DisplayQuestionDetails();
-        Console.Write("Your answer: ");
+       // something
     }
 
     public override bool CheckAnswer(string userAnswer)

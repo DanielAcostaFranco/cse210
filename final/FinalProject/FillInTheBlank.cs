@@ -10,10 +10,7 @@ public class FillInTheBlank : Question
 
     public override void DisplayQuestion()
     {
-        base.DisplayQuestionDetails();
-        string display = _templateText.Replace("[BLANK]", "____________________");
-        Console.WriteLine(display);
-        Console.Write("Fill in the blank: ");
+        // something again.. :) Hi Maddie or brother Tuck! :) 
     }
 
     public override bool CheckAnswer(string userAnswer)

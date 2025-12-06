@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.IO; // Necesario para SaveQuiz y LoadQuiz
+using System.IO;
 
 public class Menu
 {

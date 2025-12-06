@@ -10,12 +10,7 @@ public class MultipleChoice : Question
 
     public override void DisplayQuestion()
     {
-        base.DisplayQuestionDetails();
-        Console.WriteLine("Options:");
-        for (int i = 0; i < _options.Count; i++)
-        {
-            Console.WriteLine($"  {i + 1}. {_options[i]}");
-        }
+        // not created yet :)
     }
 
     public override bool CheckAnswer(string userAnswer)
