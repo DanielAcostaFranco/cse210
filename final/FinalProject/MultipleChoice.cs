@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public class MultipleChoice : Question
 {
@@ -11,17 +10,17 @@ public class MultipleChoice : Question
     {
         _options = options;
     }
-    
-    protected override string GetInstructionHeader()
+
+    public override string GetInstructionHeader()
     {
         return "Select the correct option number:";
     }
 
     public override void DisplayQuestion()
     {
-        Console.WriteLine($"--- Question: {Title} ({_points} points) ---");
+        Console.WriteLine($"--- Question: {Title} ({Points} points) ---");
         Console.WriteLine(GetInstructionHeader());
-        Console.WriteLine(_description);
+        Console.WriteLine(Title);
         
         for (int i = 0; i < _options.Count; i++)
         {
@@ -33,15 +32,15 @@ public class MultipleChoice : Question
     {
         if (int.TryParse(userAnswer, out int userChoice) && userChoice > 0 && userChoice <= _options.Count)
         {
-            return _options[userChoice - 1].ToLower() == _rawAnswer.ToLower();
+            return _options[userChoice - 1].ToLower() == GetRawAnswer().ToLower();
         }
         
-        return _rawAnswer.ToLower().Trim() == userAnswer.ToLower().Trim();
+        return GetRawAnswer().ToLower().Trim() == userAnswer.ToLower().Trim();
     }
-    
+
     public override string Serialize()
     {
         string optionsData = string.Join(";", _options);
-        return $"MultipleChoice|{Title}|{_points}|{_rawAnswer}|{optionsData}";
+        return $"MultipleChoice|{Title}|{Points}|{GetRawAnswer()}|{optionsData}";
     }
 }

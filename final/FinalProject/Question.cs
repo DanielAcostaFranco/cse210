@@ -2,9 +2,9 @@ using System;
 
 public abstract class Question
 {
-    protected string _description;
-    protected string _rawAnswer;
-    protected int _points;
+    private string _description;
+    private string _rawAnswer;
+    private int _points;
 
     public Question(string description, string rawAnswer, int points = 10)
     {
@@ -13,24 +13,20 @@ public abstract class Question
         _points = points;
     }
 
-    public string Title 
-    {
-        get { return _description; }
-    }
-    
-    public int Points
-    {
-        get { return _points; }
-    }
-    
-    protected virtual string GetInstructionHeader()
+    public string Title => _description;
+    public int Points => _points;
+
+    public virtual string GetInstructionHeader()
     {
         return "Complete the following task:";
     }
 
-    public abstract void DisplayQuestion(); 
-    
-    public abstract bool CheckAnswer(string userAnswer);
+    public string GetRawAnswer()
+    {
+        return _rawAnswer;
+    }
 
-    public abstract string Serialize(); 
+    public abstract void DisplayQuestion();
+    public abstract bool CheckAnswer(string userAnswer);
+    public abstract string Serialize();
 }

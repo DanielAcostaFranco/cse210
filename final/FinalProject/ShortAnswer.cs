@@ -6,30 +6,27 @@ public class ShortAnswer : Question
         : base(description, rawAnswer, points)
     {
     }
-    
-    protected override string GetInstructionHeader()
+
+    public override string GetInstructionHeader()
     {
         return "Answer the following question briefly:";
     }
 
     public override void DisplayQuestion()
     {
-       Console.WriteLine($"--- Question: {Title} ({_points} points) ---");
-       Console.WriteLine(GetInstructionHeader());
-       Console.WriteLine(_description);
-       Console.WriteLine("Type your answer below:");
+        Console.WriteLine($"--- Question: {Title} ({Points} points) ---");
+        Console.WriteLine(GetInstructionHeader());
+        Console.WriteLine(Title);
+        Console.WriteLine("Type your answer below:");
     }
 
     public override bool CheckAnswer(string userAnswer)
     {
-        string normalizedRawAnswer = _rawAnswer.ToLower().Trim();
-        string normalizedUserAnswer = userAnswer.ToLower().Trim();
-        
-        return normalizedRawAnswer == normalizedUserAnswer;
+        return GetRawAnswer().ToLower().Trim() == userAnswer.ToLower().Trim();
     }
 
     public override string Serialize()
     {
-        return $"ShortAnswer|{Title}|{_points}|{_rawAnswer}";
+        return $"ShortAnswer|{Title}|{Points}|{GetRawAnswer()}";
     }
 }

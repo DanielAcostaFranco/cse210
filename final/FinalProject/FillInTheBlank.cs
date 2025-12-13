@@ -10,14 +10,14 @@ public class FillInTheBlank : Question
         _templateText = templateText;
     }
 
-    protected override string GetInstructionHeader()
+    public override string GetInstructionHeader()
     {
         return "Fill in the blank space:";
     }
 
     public override void DisplayQuestion()
     {
-        Console.WriteLine($"--- Question: {Title} ({_points} points) ---");
+        Console.WriteLine($"--- Question: {Title} ({Points} points) ---");
         Console.WriteLine(GetInstructionHeader());
         
         string formattedText = _templateText.Replace("_____", "(___BLANK___)");
@@ -27,14 +27,11 @@ public class FillInTheBlank : Question
 
     public override bool CheckAnswer(string userAnswer)
     {
-        string normalizedRawAnswer = _rawAnswer.ToLower().Trim();
-        string normalizedUserAnswer = userAnswer.ToLower().Trim();
-        
-        return normalizedRawAnswer == normalizedUserAnswer;
+        return GetRawAnswer().ToLower().Trim() == userAnswer.ToLower().Trim();
     }
-    
+
     public override string Serialize()
     {
-        return $"FillInTheBlank|{Title}|{_points}|{_rawAnswer}|{_templateText}";
+        return $"FillInTheBlank|{Title}|{Points}|{GetRawAnswer()}|{_templateText}";
     }
 }

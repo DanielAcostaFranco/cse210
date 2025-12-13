@@ -133,7 +133,7 @@ public class Menu
 
     private void AddShortAnswer(Quiz quiz)
     {
-        Console.Write("Enter the question statement: ");
+        Console.Write("Enter the question: ");
         string desc = Console.ReadLine();
         Console.Write("Enter correct answer: ");
         string answer = Console.ReadLine();
@@ -157,7 +157,7 @@ public class Menu
     
     private void AddMultipleChoice(Quiz quiz)
     {
-        Console.Write("Enter the question statement: ");
+        Console.Write("Enter the question: ");
         string desc = Console.ReadLine();
         
         List<string> options = new List<string>();
@@ -184,7 +184,7 @@ public class Menu
     
     private void AddFillInTheBlank(Quiz quiz)
     {
-        Console.Write("Enter template text (use '_____' for the blank): ");
+        Console.Write("Enter statement text (use '_____' for the blank): ");
         string template = Console.ReadLine();
         Console.Write("Enter the correct word/phrase to fill the blank: ");
         string answer = Console.ReadLine();
@@ -277,32 +277,34 @@ public class Menu
         string type = parts[0];
         string description = parts[1];
         
-        // Asumiendo que parts[2] es un entero válido (sin TryParse ni chequeo de retorno)
         int points = int.Parse(parts[2]); 
         
         string rawAnswer = parts[3];
         
-        switch (type)
+        if (type == "ShortAnswer")
         {
-            case "ShortAnswer":
-                return new ShortAnswer(description, rawAnswer, points);
-            case "TrueFalse":
-                return new TrueFalse(description, rawAnswer, points);
-
-            case "FillInTheBlank":
-                string template = parts[4];
-                return new FillInTheBlank(description, rawAnswer, points, template);
-
-            case "MultipleChoice":
-                string optionsString = parts[4];
-                string[] optionArray = optionsString.Split(';');
-                List<string> options = new List<string>(optionArray);
-                
-                return new MultipleChoice(description, rawAnswer, points, options);
-
-            default:
-                // Mantenemos el default para no forzar la creación de un tipo desconocido
-                return null;
+            return new ShortAnswer(description, rawAnswer, points);
+        }
+        else if (type == "TrueFalse")
+        {
+            return new TrueFalse(description, rawAnswer, points);
+        }
+        else if (type == "FillInTheBlank")
+        {
+            string template = parts[4];
+            return new FillInTheBlank(description, rawAnswer, points, template);
+        }
+        else if (type == "MultipleChoice")
+        {
+            string optionsString = parts[4];
+            string[] optionArray = optionsString.Split(';');
+            List<string> options = new List<string>(optionArray);
+            
+            return new MultipleChoice(description, rawAnswer, points, options);
+        }
+        else
+        {
+            return null;
         }
     }
 
