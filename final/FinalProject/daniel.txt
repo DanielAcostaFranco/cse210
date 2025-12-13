@@ -1,0 +1,5 @@
+Daniel
+ShortAnswer|What is my name?|10|daniel
+TrueFalse|Paris is the capital of France|10|true
+MultipleChoice|Which is the capital of Mexico?|15|mexico city|mexico city;paris;colombia;monterrey
+FillInTheBlank|Mexico is in the '________' continent.|10|american|Mexico is in the '________' continent.

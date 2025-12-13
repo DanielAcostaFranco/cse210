@@ -35,7 +35,7 @@ public class Game
 
             if (CheckAnswer(question, userAnswer))
             {
-                int pointsGained = 10; 
+                int pointsGained = question.Points; 
                 _currentScore += pointsGained; 
                 Console.WriteLine($"Correct! You earned {pointsGained} points.");
             }
@@ -58,12 +58,7 @@ public class Game
     {
         return question.CheckAnswer(userAnswer);
     }
-
-    public bool CheckAnswer(string userAnswer)
-    {
-        return true; 
-    }
-
+    
     public void DisplayResult()
     {
         Console.WriteLine("\n=============================");

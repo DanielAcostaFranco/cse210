@@ -1,29 +1,36 @@
+using System;
+
 public abstract class Question
 {
-    protected string _title;
     protected string _description;
     protected string _rawAnswer;
     protected int _points;
 
-    public Question(string title, string description, string rawAnswer, int points = 10)
+    public Question(string description, string rawAnswer, int points = 10)
     {
-        _title = title;
         _description = description;
         _rawAnswer = rawAnswer;
         _points = points;
     }
 
-    public string Title
+    public string Title 
     {
-        get { return _title; }
+        get { return _description; }
     }
     
-    public abstract void DisplayQuestion();
+    public int Points
+    {
+        get { return _points; }
+    }
+    
+    protected virtual string GetInstructionHeader()
+    {
+        return "Complete the following task:";
+    }
+
+    public abstract void DisplayQuestion(); 
+    
     public abstract bool CheckAnswer(string userAnswer);
 
-    public virtual void DisplayQuestionDetails()
-    {
-        Console.WriteLine($"--- Question: {_title} ({_points} points) ---");
-        Console.WriteLine(_description);
-    }
+    public abstract string Serialize(); 
 }

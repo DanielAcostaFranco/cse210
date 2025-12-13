@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Quiz
 {
@@ -29,12 +30,10 @@ public class Quiz
     public void AddQuestion(Question question)
     {
         _questions.Add(question);
-        Console.WriteLine($"Question added: {question.Title}");
     }
 
     public void RemoveQuestion(Question question)
     {
         _questions.Remove(question);
-        Console.WriteLine($"Question removed: {question.Title}");
     }
 }
